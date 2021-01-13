@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+ 
+  <Button @click="open">12332</Button>
+  <hr/>
+  <Switch v-model:value='bool'/>
+  <hr/>
+  <Tabs v-model:selected='tabSelected'>
+    <Tab title="tab1"></Tab>
+    <Tab title="tab2"></Tab>
+  </Tabs>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import {Button,Switch,Dialog,openDialog,Tabs,Tab } from 'lunzi-ui-1'
+import 'lunzi-ui-1/dist/lib/lunzi.css'
+import { ref } from 'vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Button,Switch,Dialog,Tabs,Tab
+  },
+ data(){
+   return {
+     bool:false,
+tabSelected:'tab1'
+   }
+ },
+ methods:{
+   open(){
+     openDialog({title:'标题',content:'内容'})
+   }
+ }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
